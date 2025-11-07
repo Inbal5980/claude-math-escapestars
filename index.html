@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>חדר בריחה מתמטי</title>
+    <title>חדר הבריחה המתמטי</title>
     <style>
         * {
             margin: 0;
@@ -13,392 +13,308 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #60a5fa 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
-            margin: 0;
             overflow: hidden;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 30px 50px;
-            width: 90vw;
-            height: 90vh;
-            max-width: 1600px;
-            max-height: 900px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .instruction-box {
-            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 40px;
-            border: 4px solid #a78bfa;
-        }
-
-        .instruction-box p {
-            text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: #6b21a8;
-        }
-
-        .schema-container {
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .top-boxes {
-            display: flex;
-            gap: 0;
-            margin-bottom: 20px;
-        }
-
-        .box {
-            flex: 1;
-            padding: 20px;
-            border: 4px solid;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .change-box {
-            background: linear-gradient(135deg, #fbcfe8 0%, #fce7f3 100%);
-            border-color: #db2777;
-            border-radius: 15px 0 0 0;
-            border-left: 4px solid #db2777;
-        }
-
-        .change-box::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 15px;
-            background: #fbcfe8;
-            border-left: 4px solid #db2777;
-            border-right: 4px solid #db2777;
-        }
-
-        .start-box {
-            background: linear-gradient(135deg, #bfdbfe 0%, #dbeafe 100%);
-            border-color: #2563eb;
-            border-radius: 0 15px 0 0;
-            border-right: 4px solid #2563eb;
-        }
-
-        .start-box::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 15px;
-            background: #bfdbfe;
-            border-left: 4px solid #2563eb;
-            border-right: 4px solid #2563eb;
-        }
-
-        .box-label {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .change-box .box-label {
-            color: #9f1239;
-        }
-
-        .start-box .box-label {
-            color: #1e3a8a;
-        }
-
-        .arrow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .arrow-line {
-            width: 2px;
-            height: 30px;
-            background: linear-gradient(to bottom, #a78bfa, #10b981);
-        }
-
-        .arrow-head {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 20px solid #10b981;
-        }
-
-        .end-box {
-            background: linear-gradient(135deg, #bbf7d0 0%, #d1fae5 100%);
-            border-color: #16a34a;
-            border-radius: 15px;
-            padding: 20px;
-            border: 4px solid #16a34a;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .end-box .box-label {
-            color: #15803d;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        input[type="number"] {
             width: 100%;
-            padding: 15px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            border-radius: 10px;
-            border: 3px solid;
-            background: white;
-            transition: all 0.3s;
-        }
-
-        .change-box input {
-            border-color: #be185d;
-        }
-
-        .change-box input:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(219, 39, 119, 0.3);
-        }
-
-        .start-box input {
-            border-color: #1d4ed8;
-        }
-
-        .start-box input:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
-        }
-
-        .end-box input {
-            border-color: #15803d;
-        }
-
-        .end-box input:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.3);
-        }
-
-        .buttons-container {
+            height: 100%;
+            max-width: 1400px;
             display: flex;
-            gap: 20px;
+            align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            padding: 24px;
         }
 
-        button {
-            padding: 15px 35px;
-            font-size: 20px;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 32px;
+            width: 100%;
+            max-width: 900px;
         }
 
-        button:hover {
-            transform: scale(1.05);
+        .input-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
         }
 
-        .check-btn {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-            color: white;
-        }
-
-        .check-btn:hover {
-            background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
-        }
-
-        .reset-btn {
-            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
-            color: white;
-        }
-
-        .reset-btn:hover {
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-        }
-
-        .message {
-            padding: 25px;
-            border-radius: 20px;
+        .input-group {
             text-align: center;
-            font-size: 20px;
+        }
+
+        .label {
+            color: #6b46c1;
             font-weight: bold;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            border: 4px solid;
-            animation: pulse 2s infinite;
-            display: none;
+            font-size: 18px;
+            margin-bottom: 8px;
         }
 
-        .message.show {
-            display: block;
+        .input-box {
+            width: 144px;
+            height: 80px;
+            font-size: 32px;
+            text-align: center;
+            border: 4px solid #fbbf24;
+            border-radius: 16px;
+            background: #fef3c7;
+            outline: none;
+            transition: border-color 0.3s;
         }
 
-        .message.success {
-            background: linear-gradient(135deg, #4ade80 0%, #10b981 100%);
-            color: white;
-            border-color: #16a34a;
+        .input-box:focus {
+            border-color: #f59e0b;
         }
 
-        .message.warning {
-            background: linear-gradient(135deg, #fbbf24 0%, #fb923c 100%);
-            color: #78350f;
-            border-color: #f97316;
+        .input-box:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
-        .message.error {
-            background: linear-gradient(135deg, #f87171 0%, #ec4899 100%);
-            color: white;
-            border-color: #dc2626;
+        .result-box {
+            width: 192px;
+            height: 96px;
+            border: 4px solid #a78bfa;
+            background: #ede9fe;
+        }
+
+        .result-box:focus {
+            border-color: #8b5cf6;
+        }
+
+        .arrow {
+            text-align: center;
+            margin-bottom: 16px;
         }
 
         .arrow-icon {
-            margin-top: 15px;
-            font-size: 48px;
-            animation: bounce 1s infinite;
+            font-size: 32px;
+            color: #8b5cf6;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+        .result-section {
+            text-align: center;
+            margin-bottom: 24px;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-10px); }
+        .button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            opacity: 1;
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .check-button {
+            background: linear-gradient(to right, #8b5cf6, #4f46e5);
+            color: white;
+        }
+
+        .check-button:hover {
+            background: linear-gradient(to right, #7c3aed, #4338ca);
+        }
+
+        .retry-button {
+            background: linear-gradient(to right, #fb923c, #ec4899);
+            color: white;
+            margin-top: 12px;
+        }
+
+        .retry-button:hover {
+            background: linear-gradient(to right, #f97316, #db2777);
+        }
+
+        .message {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            direction: rtl;
+        }
+
+        .message.success {
+            background: #dcfce7;
+            color: #166534;
+            border: 4px solid #86efac;
+        }
+
+        .message.warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 4px solid #fde047;
+        }
+
+        .message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 4px solid #fca5a5;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .sparkle {
+            display: inline-block;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="instruction-box">
-            <p>השלימו את התרגיל המתאים לחדר!</p>
-        </div>
-
-        <div class="schema-container">
-            <!-- שתי תיבות עליונות -->
-            <div class="top-boxes">
-                <!-- תיבת שינוי -->
-                <div class="box change-box">
-                    <div class="box-label">שינוי</div>
-                    <input type="number" id="change" placeholder="?">
+        <div class="card">
+            <!-- תיבות התחלה ושינוי -->
+            <div class="input-row">
+                <div class="input-group">
+                    <div class="label">התחלה</div>
+                    <input type="text" id="firstNum" class="input-box" maxlength="2">
                 </div>
-                <!-- תיבת התחלה -->
-                <div class="box start-box">
-                    <div class="box-label">התחלה</div>
-                    <input type="number" id="start" placeholder="?">
+                <div class="input-group">
+                    <div class="label">שינוי</div>
+                    <input type="text" id="secondNum" class="input-box" maxlength="2">
                 </div>
             </div>
 
-            <!-- חץ למטה -->
-            <div class="arrow-container">
-                <div class="arrow-line"></div>
-                <div class="arrow-head"></div>
+            <!-- חץ -->
+            <div class="arrow">
+                <div class="arrow-icon">↓</div>
             </div>
 
             <!-- תיבת סוף -->
-            <div class="end-box">
-                <div class="box-label">סוף</div>
-                <input type="number" id="end" placeholder="?">
+            <div class="result-section">
+                <div class="label">סוף</div>
+                <input type="text" id="result" class="input-box result-box" maxlength="2">
             </div>
-        </div>
 
-        <!-- כפתורים -->
-        <div class="buttons-container">
-            <button class="check-btn" onclick="checkAnswer()">✨ בדוק תשובה</button>
-            <button class="reset-btn" onclick="resetFields()">🔄 נסו שוב</button>
-        </div>
+            <!-- כפתור בדיקה -->
+            <button id="checkBtn" class="button check-button">
+                <span class="sparkle">✨</span>
+                <span>בדוק תשובה</span>
+                <span class="sparkle">✨</span>
+            </button>
 
-        <!-- הודעה -->
-        <div id="message" class="message"></div>
+            <!-- הודעת משוב -->
+            <div id="message" class="message hidden"></div>
+
+            <!-- כפתור נסו שוב -->
+            <button id="retryBtn" class="button retry-button hidden">
+                🔄 נסו שוב
+            </button>
+        </div>
     </div>
 
     <script>
+        const firstNumInput = document.getElementById('firstNum');
+        const secondNumInput = document.getElementById('secondNum');
+        const resultInput = document.getElementById('result');
+        const checkBtn = document.getElementById('checkBtn');
+        const retryBtn = document.getElementById('retryBtn');
+        const messageDiv = document.getElementById('message');
+
+        let isCorrect = false;
+
         function checkAnswer() {
-            const start = parseInt(document.getElementById('start').value);
-            const change = parseInt(document.getElementById('change').value);
-            const end = parseInt(document.getElementById('end').value);
-            const messageDiv = document.getElementById('message');
+            const firstNum = firstNumInput.value.trim();
+            const secondNum = secondNumInput.value.trim();
+            const result = resultInput.value.trim();
 
             // בדיקה אם כל השדות מלאים
-            if (!document.getElementById('start').value || 
-                !document.getElementById('change').value || 
-                !document.getElementById('end').value) {
-                showMessage('אופסס.. זה לא נכון. נסו שוב', 'error');
+            if (!firstNum || !secondNum || !result) {
+                showMessage('❌ אופס! עליך למלא את כל השדות', 'error');
                 return;
             }
 
-            // בדיקה לתשובה הנכונה: 2+7=9 או 7+2=9
-            if ((start === 2 && change === 7 && end === 9) || 
-                (start === 7 && change === 2 && end === 9)) {
-                showMessage('כל הכבוד! כעת לחצו על חץ ההמשך וכתבו את הפתרון במקום המתאים כדי לעבור לחדר הבא!', 'success', true);
+            const num1 = parseInt(firstNum);
+            const num2 = parseInt(secondNum);
+            const res = parseInt(result);
+
+            // בדיקה שהערכים הם מספרים תקינים
+            if (isNaN(num1) || isNaN(num2) || isNaN(res)) {
+                showMessage('❌ אופסס.. זה לא נכון. נסו שוב', 'error');
                 return;
             }
 
-            // בדיקה אם התשובה נכונה מתמטית אבל לא מתאימה
-            if (start + change === end) {
-                showMessage('התרגיל המתמטי שכתבתם נכון אבל הוא אינו מתאים לפתרון השאלה בחדר. נסו שוב!', 'warning');
+            // בדיקה אם זה התרגיל הנכון: 7+3=9 או 3+7=9
+            if ((num1 === 7 && num2 === 3 && res === 9) || (num1 === 3 && num2 === 7 && res === 9)) {
+                showMessage('🎉 כל הכבוד! כעת לחצו על חץ ההמשך וכתבו את הפתרון במקום המתאים כדי לעבור לחדר הבא!', 'success');
+                isCorrect = true;
+                disableInputs();
+                checkBtn.classList.add('hidden');
+                retryBtn.classList.add('hidden');
                 return;
             }
 
-            // תשובה לא נכונה
-            showMessage('אופסס.. זה לא נכון. נסו שוב', 'error');
+            // בדיקה אם זה תרגיל חיבור נכון מתמטית
+            if (num1 + num2 === res) {
+                showMessage('🤔 התרגיל המתמטי שכתבתם נכון אבל הוא אינו מתאים לפתרון השאלה בחדר. נסו שוב!', 'warning');
+                retryBtn.classList.remove('hidden');
+                return;
+            }
+
+            showMessage('❌ אופסס.. זה לא נכון. נסו שוב', 'error');
+            retryBtn.classList.remove('hidden');
         }
 
-        function showMessage(text, type, showArrow = false) {
-            const messageDiv = document.getElementById('message');
+        function showMessage(text, type) {
             messageDiv.textContent = text;
-            messageDiv.className = 'message show ' + type;
-            
-            if (showArrow) {
-                messageDiv.innerHTML = text + '<div class="arrow-icon">←</div>';
-            }
+            messageDiv.className = 'message ' + type;
+            messageDiv.classList.remove('hidden');
         }
 
-        function resetFields() {
-            document.getElementById('start').value = '';
-            document.getElementById('change').value = '';
-            document.getElementById('end').value = '';
-            document.getElementById('message').className = 'message';
+        function resetInputs() {
+            firstNumInput.value = '';
+            secondNumInput.value = '';
+            resultInput.value = '';
+            messageDiv.classList.add('hidden');
+            retryBtn.classList.add('hidden');
+            isCorrect = false;
+            enableInputs();
         }
 
-        // אפשרות לבדוק עם Enter
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkAnswer();
-            }
+        function disableInputs() {
+            firstNumInput.disabled = true;
+            secondNumInput.disabled = true;
+            resultInput.disabled = true;
+        }
+
+        function enableInputs() {
+            firstNumInput.disabled = false;
+            secondNumInput.disabled = false;
+            resultInput.disabled = false;
+        }
+
+        checkBtn.addEventListener('click', checkAnswer);
+        retryBtn.addEventListener('click', resetInputs);
+
+        // אפשרות ללחוץ Enter לבדיקה
+        [firstNumInput, secondNumInput, resultInput].forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !isCorrect) {
+                    checkAnswer();
+                }
+            });
         });
     </script>
 </body>
