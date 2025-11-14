@@ -55,13 +55,13 @@
         .label {
             color: #6b46c1;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 28px;
             margin-bottom: 8px;
         }
 
         .input-box {
-            width: 144px;
-            height: 80px;
+            width: 100px;
+            height: 60px;
             font-size: 32px;
             text-align: center;
             border: 4px solid #fbbf24;
@@ -81,8 +81,8 @@
         }
 
         .result-box {
-            width: 192px;
-            height: 96px;
+            width: 120px;
+            height: 70px;
             border: 4px solid #a78bfa;
             background: #ede9fe;
         }
@@ -256,8 +256,8 @@
                 return;
             }
 
-            // בדיקה אם זה התרגיל הנכון: 7+3=9 או 3+7=9
-            if ((num1 === 7 && num2 === 3 && res === 9) || (num1 === 3 && num2 === 7 && res === 9)) {
+            // בדיקה אם זה התרגיל הנכון: 7+2=9
+            if (num1 === 7 && num2 === 2 && res === 9) {
                 showMessage('🎉 כל הכבוד! כעת לחצו על חץ ההמשך וכתבו את הפתרון במקום המתאים כדי לעבור לחדר הבא!', 'success');
                 isCorrect = true;
                 disableInputs();
